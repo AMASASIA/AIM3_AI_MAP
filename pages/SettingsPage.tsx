@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrightCard } from '../components/BrightCard';
-import { Globe, Moon, Wallet, ChevronRight, LogOut, ShieldCheck, Link as LinkIcon, Copy } from 'lucide-react';
+import { Globe, Moon, Wallet, ChevronRight, LogOut, ShieldCheck, Link as LinkIcon, Copy, Mic, Bell } from 'lucide-react';
 
 const langs = ["JP", "EN", "FR", "ES", "KR", "IT"];
 
@@ -8,6 +8,8 @@ export const SettingsPage: React.FC = () => {
   const [selectedLang, setSelectedLang] = useState("EN");
   const [darkMode, setDarkMode] = useState(false);
   const [walletConnected, setWalletConnected] = useState(false);
+  const [voiceActive, setVoiceActive] = useState(true);
+  const [notifications, setNotifications] = useState(true);
 
   return (
     <div className="max-w-md mx-auto w-full">
@@ -62,6 +64,57 @@ export const SettingsPage: React.FC = () => {
           </div>
         </section>
 
+        {/* System & Preferences */}
+        <section className="mb-10">
+          <h3 className="flex items-center text-xs font-sans font-bold uppercase tracking-[0.2em] text-stone-400 mb-4 border-b border-black/10 pb-2">
+             System
+          </h3>
+          
+          <div className="space-y-4">
+             {/* Voice Activation */}
+             <div className="flex items-center justify-between">
+               <div className="flex items-center">
+                 <Mic size={16} className="text-stone-800 mr-3" strokeWidth={1.5} />
+                 <span className="font-serif text-lg">Voice Activation</span>
+               </div>
+               <button 
+                  onClick={() => setVoiceActive(!voiceActive)}
+                  className={`w-12 h-6 border border-black rounded-full p-1 transition-colors ${voiceActive ? 'bg-black' : 'bg-white'}`}
+                >
+                  <div className={`w-4 h-4 rounded-full transition-transform ${voiceActive ? 'translate-x-6 bg-white' : 'translate-x-0 bg-black'}`}></div>
+                </button>
+             </div>
+
+             {/* Notifications */}
+             <div className="flex items-center justify-between">
+               <div className="flex items-center">
+                 <Bell size={16} className="text-stone-800 mr-3" strokeWidth={1.5} />
+                 <span className="font-serif text-lg">Notifications</span>
+               </div>
+               <button 
+                  onClick={() => setNotifications(!notifications)}
+                  className={`w-12 h-6 border border-black rounded-full p-1 transition-colors ${notifications ? 'bg-black' : 'bg-white'}`}
+                >
+                  <div className={`w-4 h-4 rounded-full transition-transform ${notifications ? 'translate-x-6 bg-white' : 'translate-x-0 bg-black'}`}></div>
+                </button>
+             </div>
+
+             {/* Dark Mode */}
+             <div className="flex items-center justify-between">
+               <div className="flex items-center">
+                 <Moon size={16} className="text-stone-800 mr-3" strokeWidth={1.5} />
+                 <span className="font-serif text-lg">Dark Mode</span>
+               </div>
+               <button 
+                  onClick={() => setDarkMode(!darkMode)}
+                  className={`w-12 h-6 border border-black rounded-full p-1 transition-colors ${darkMode ? 'bg-black' : 'bg-white'}`}
+                >
+                  <div className={`w-4 h-4 rounded-full transition-transform ${darkMode ? 'translate-x-6 bg-white' : 'translate-x-0 bg-black'}`}></div>
+                </button>
+             </div>
+          </div>
+        </section>
+
         {/* Language Section */}
         <section className="mb-10">
           <h3 className="flex items-center text-xs font-sans font-bold uppercase tracking-[0.2em] text-stone-400 mb-4 border-b border-black/10 pb-2">
@@ -80,22 +133,6 @@ export const SettingsPage: React.FC = () => {
                 {l}
               </button>
             ))}
-          </div>
-        </section>
-
-        {/* Appearance Section */}
-        <section className="mb-10">
-          <h3 className="flex items-center text-xs font-sans font-bold uppercase tracking-[0.2em] text-stone-400 mb-4 border-b border-black/10 pb-2">
-            <Moon className="w-3 h-3 mr-2" /> Appearance
-          </h3>
-          <div className="flex items-center justify-between py-2">
-            <span className="font-serif text-lg">Dark Mode</span>
-            <button 
-              onClick={() => setDarkMode(!darkMode)}
-              className={`w-12 h-6 border border-black rounded-full p-1 transition-colors ${darkMode ? 'bg-black' : 'bg-white'}`}
-            >
-              <div className={`w-4 h-4 bg-current rounded-full transition-transform ${darkMode ? 'translate-x-6 bg-white' : 'translate-x-0 bg-black'}`}></div>
-            </button>
           </div>
         </section>
 
