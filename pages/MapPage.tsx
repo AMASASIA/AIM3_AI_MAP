@@ -66,7 +66,7 @@ const TONER_STYLE = [
   { featureType: "transit", stylers: [{ visibility: "off" }] }
 ];
 
-const DEMO_KEY = "AIzaSyAzihfsqd_Ih85OnYV66EldNQkeJrVTIiQ";
+const DEMO_KEY = "XYZ";
 
 interface ChatMessage {
   id: string;
