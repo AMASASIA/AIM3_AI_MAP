@@ -1,0 +1,8 @@
+{
+  "name": "AIM3 AI-MAP Bright Luxury",
+  "description": "A luxury-themed AI mapping application featuring OKE Cards, Voice UI, and customization.",
+  "requestFramePermissions": [
+    "microphone",
+    "geolocation"
+  ]
+}
